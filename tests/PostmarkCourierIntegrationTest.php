@@ -59,7 +59,6 @@ class PostmarkCourierIntegrationTest extends IntegrationTestCase
             ->withSubject($subject)
             ->withContent(SimpleContent::text('text')->addHtml('HTML<img src="cid:embed-test"/>'))
             ->cc($this->getCc())
-            ->bcc($this->getBcc())
             ->attach(new FileAttachment(self::$file, 'Attached File'))
             ->embed(new FileAttachment(self::$file, 'Embedded File', null, 'image/jpeg'), 'embed-test')
             ->addHeader('X-test-header', 'Test')
@@ -100,7 +99,6 @@ class PostmarkCourierIntegrationTest extends IntegrationTestCase
             ->from(getenv('POSTMARK_SENDER'))
             ->to($this->getTo(), 'To')
             ->cc($this->getCc(), 'CC')
-            ->bcc($this->getCc(), 'BCC')
             ->withSubject($subject)
             ->withContent(new TemplatedContent(
                 getenv('POSTMARK_TEMPLATE_ID'),

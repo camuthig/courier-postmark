@@ -20,11 +20,6 @@ class IntegrationTestCase extends TestCase
         return getenv('CC_EMAIL');
     }
 
-    protected function getBcc(): string
-    {
-        return getenv('BCC_EMAIL');
-    }
-
     protected function getEmailDeliveredToTo(string $subject): ?Message
     {
         return $this->getEmailFromMailBox('Courier/To', $subject);
@@ -33,11 +28,6 @@ class IntegrationTestCase extends TestCase
     protected function getEmailDeliveredToCc(string $subject): ?Message
     {
         return $this->getEmailFromMailBox('Courier/CC', $subject);
-    }
-
-    protected function getEmailDeliveredToBcc(string $subject): ?Message
-    {
-        return $this->getEmailFromMailBox('Courier/BCC', $subject);
     }
 
     protected static function assertHasAttachmentWithContentId(Message $message, string $contentId): void
