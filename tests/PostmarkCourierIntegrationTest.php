@@ -13,7 +13,7 @@ use PhpEmail\EmailBuilder;
 use Postmark\PostmarkClient;
 
 /**
- * @covers \Courier\PostmarkCourier
+ * @covers \Camuthig\Courier\Postmark\PostmarkCourier
  * @large
  */
 class PostmarkCourierIntegrationTest extends IntegrationTestCase

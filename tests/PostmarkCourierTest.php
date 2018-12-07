@@ -19,9 +19,7 @@ use Postmark\Models\PostmarkException;
 use Postmark\PostmarkClient;
 
 /**
- * @covers \Courier\PostmarkCourier
- * @covers \Courier\Exceptions\TransmissionException
- * @covers \Courier\Exceptions\UnsupportedContentException
+ * @covers \Camuthig\Courier\Postmark\PostmarkCourier
  */
 class PostmarkCourierTest extends TestCase
 {
