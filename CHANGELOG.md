@@ -7,6 +7,8 @@ and this project attempts to follow [Semantic Versioning](http://semver.org/spec
 
 ## Unreleased
 
+## 0.1.0
+
 ### Changed
 
 * Fork from `quartzy/courier` with just Postmark adapter logic
