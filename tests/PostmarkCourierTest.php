@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Camuthig\Courier\Postmark\Test;
 
-use Courier\Exceptions\TransmissionException;
-use Courier\Exceptions\UnsupportedContentException;
 use Camuthig\Courier\Postmark\PostmarkCourier;
 use Camuthig\Courier\Postmark\Test\Support\TestContent;
+use Courier\Exceptions\TransmissionException;
+use Courier\Exceptions\UnsupportedContentException;
 use Mockery;
 use PhpEmail\Attachment\FileAttachment;
 use PhpEmail\Content\EmptyContent;
