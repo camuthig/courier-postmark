@@ -1,5 +1,5 @@
 {
-    "name": "quartzy/courier-postmark",
+    "name": "camuthig/courier-postmark",
     "description": "An adapter for sending emails through Postmark with Courier",
     "type": "library",
     "license": "Apache-2.0",
