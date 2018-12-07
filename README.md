@@ -8,38 +8,19 @@
 [![Style Status][ico-styleci]][link-styleci]
 [![Scrutinizer Code Quality][ico-scrutinizer]][link-scrutinizer]
 
-A library to send transactional emails using domain objects and concise
-interfaces.
+A courier implementation for Postmark.
 
-Check out the [documentation](https://quartzy.github.io/courier/) for more details on
-how to use Courier!
-
-This library provides tools to send standardized emails using third-party SaaS
-SMTP providers like SparkPost and Postmark without having to reinvent the wheel.
-By leveraging a [standardized domain
-model](https://github.com/quartzy/php-email) for defining our emails, Courier is
-capable of defining drivers (or "couriers" in our case) that allow the developer
-to easily switch out how they send their emails without changing any part of
-their code that builds and delivers the email.
+See [documentation](https://quartzy.github.io/courier/couriers/postmark/) for full details.
 
 ## Install
 
 ### Via Composer
 
 ```bash
-composer require quartzy/courier
+composer require camuthig/courier-postmark
 ```
 
 ## Usage
-
-Each email provider will also have their own dependencies, for example:
-
-```bash
-# Send emails with SendGrid
-composer require sendgrid/sendgrid
-```
-
-Now you just need to create an email and send it:
 
 ```php
 <?php
@@ -48,8 +29,7 @@ use Courier\SendGridCourier;
 use PhpEmail\EmailBuilder;
 use PhpEmail\Content\SimpleContent;
 
-$key     = getenv('SENDGRID_KEY');
-$courier = new SendGridCourier(new \SendGrid($key));
+$courier = new PostmarkCourier(new PostmarkClient(getenv('POSTMARK_KEY')));
 
 $email = EmailBuilder::email()
     ->withSubject('Welcome!')
@@ -64,12 +44,6 @@ $courier->deliver($email);
 For details on building the email objects, see [Php Email](https://github.com/quartzy/php-email).
 
 
-## Supported Service Providers
-
-1. SendGrid (using v3 Web API)
-1. SparkPost
-1. Postmark
-
 ## Change log
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
@@ -80,7 +54,7 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) and [CONDUCT](CONDUCT.md) for details
 
 ## Security
 
-If you discover any security related issues, please email [opensource@quartzy.com](mailto:opensource@quartzy.com) instead of using the issue tracker.
+If you discover any security related issues, please email a project maintainer instead of using the issue tracker.
 
 ## Credits
 
@@ -92,18 +66,18 @@ If you discover any security related issues, please email [opensource@quartzy.co
 
 The Apache License, v2.0. Please see [License File](LICENSE) for more information.
 
-[ico-version]: https://img.shields.io/packagist/v/quartzy/courier.svg?style=flat-square
+[ico-version]: https://img.shields.io/packagist/v/camuthig/courier-postmark.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg?style=flat-square
-[ico-travisci]: https://img.shields.io/travis/quartzy/courier.svg?style=flat-square
-[ico-codecov]: https://img.shields.io/scrutinizer/coverage/g/quartzy/courier.svg?style=flat-square
-[ico-styleci]: https://styleci.io/repos/98693280/shield
-[ico-scrutinizer]: https://img.shields.io/scrutinizer/g/quartzy/courier.svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/quartzy/courier.svg?style=flat-square
+[ico-travisci]: https://img.shields.io/travis/camuthig/courier-postmark.svg?style=flat-square
+[ico-codecov]: https://img.shields.io/scrutinizer/coverage/g/camuthig/courier-postmark.svg?style=flat-square
+[quartzyico-styleci]: https://styleci.io/repos/projectid/shield
+[ico-scrutinizer]: https://img.shields.io/scrutinizer/g/camuthig/courier-postmark.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/packagist/dt/camuthig/courier-postmark.svg?style=flat-square
 
-[link-packagist]: https://packagist.org/packages/quartzy/courier
-[link-travisci]: https://travis-ci.org/quartzy/courier
-[link-codecov]: https://scrutinizer-ci.com/g/quartzy/courier
-[link-styleci]: https://styleci.io/repos/98693280
-[link-scrutinizer]: https://scrutinizer-ci.com/g/quartzy/courier
-[link-downloads]: https://packagist.org/packages/quartzy/courier
+[link-packagist]: https://packagist.org/packages/camuthig/courier-postmark
+[link-travisci]: https://travis-ci.org/camuthig/courier-postmark
+[link-codecov]: https://scrutinizer-ci.com/g/camuthig/courier-postmark
+[link-styleci]: https://styleci.io/repos/projectid
+[link-scrutinizer]: https://scrutinizer-ci.com/g/camuthig/courier-postmark
+[link-downloads]: https://packagist.org/packages/camuthig/courier-postmark
 [link-contributors]: ../../contributors

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Courier\Test;
+namespace Camuthig\Courier\Postmark\Test;
 
 use ZBateson\MailMimeParser\Header\Part\ParameterPart;
 use ZBateson\MailMimeParser\MailMimeParser;

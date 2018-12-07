@@ -2,10 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Courier;
+namespace Camuthig\Courier\Postmark;
 
+use Courier\ConfirmingCourier;
 use Courier\Exceptions\TransmissionException;
 use Courier\Exceptions\UnsupportedContentException;
+use Courier\SavesReceipts;
 use PhpEmail\Address;
 use PhpEmail\Attachment;
 use PhpEmail\Content;

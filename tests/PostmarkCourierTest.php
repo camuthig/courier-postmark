@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Courier\Test;
+namespace Camuthig\Courier\Postmark\Test;
 
 use Courier\Exceptions\TransmissionException;
 use Courier\Exceptions\UnsupportedContentException;
-use Courier\PostmarkCourier;
-use Courier\Test\Support\TestContent;
+use Camuthig\Courier\Postmark\PostmarkCourier;
+use Camuthig\Courier\Postmark\Test\Support\TestContent;
 use Mockery;
 use PhpEmail\Attachment\FileAttachment;
 use PhpEmail\Content\EmptyContent;
