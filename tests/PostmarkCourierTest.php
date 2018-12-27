@@ -10,7 +10,6 @@ use Courier\Exceptions\TransmissionException;
 use Courier\Exceptions\UnsupportedContentException;
 use Mockery;
 use PhpEmail\Attachment\FileAttachment;
-use PhpEmail\Content\EmptyContent;
 use PhpEmail\Content\SimpleContent;
 use PhpEmail\Content\TemplatedContent;
 use PhpEmail\EmailBuilder;
@@ -108,46 +107,6 @@ class PostmarkCourierTest extends TestCase
     }
 
     /**
-     * @testdox It should send an email with no content
-     */
-    public function testSendsEmptyEmail()
-    {
-        /** @var Mockery\Mock|PostmarkClient $client */
-        $client = Mockery::mock(PostmarkClient::class);
-
-        $courier = new PostmarkCourier($client);
-
-        $email = EmailBuilder::email()
-            ->from('sender@test.com', 'Sender')
-            ->to('receiver@test.com')
-            ->withSubject('Test From Postmark API')
-            ->withContent(new EmptyContent())
-            ->build();
-
-        $client
-            ->shouldReceive('sendEmail')
-            ->once()
-            ->with(
-                '"Sender" <sender@test.com>',
-                'receiver@test.com',
-                'Test From Postmark API',
-                'No message',
-                'No message',
-                null,
-                true,
-                null,
-                null,
-                null,
-                [],
-                [],
-                null
-            )
-            ->andReturn($this->success());
-
-        $courier->deliver($email);
-    }
-
-    /**
      * @testdox It should send an email with templated content
      */
     public function testSendsTemplatedEmail()
@@ -230,7 +189,7 @@ class PostmarkCourierTest extends TestCase
             ->from('sender@test.com', 'Sender')
             ->to('receiver@test.com')
             ->withSubject('Test From Postmark API')
-            ->withContent(new EmptyContent())
+            ->withContent(SimpleContent::text(''))
             ->build();
 
         $exception                       = new PostmarkException();
@@ -245,8 +204,8 @@ class PostmarkCourierTest extends TestCase
                 '"Sender" <sender@test.com>',
                 'receiver@test.com',
                 'Test From Postmark API',
-                'No message',
-                'No message',
+                '',
+                null,
                 null,
                 true,
                 null,

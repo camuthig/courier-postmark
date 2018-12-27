@@ -48,7 +48,6 @@ class PostmarkCourier implements ConfirmingCourier
     protected function supportedContent(): array
     {
         return [
-            Content\EmptyContent::class,
             Content\Contracts\SimpleContent::class,
             Content\Contracts\TemplatedContent::class,
         ];
@@ -94,10 +93,6 @@ class PostmarkCourier implements ConfirmingCourier
                 break;
 
             case $content instanceof Content\SimpleContent:
-                $response = $this->sendNonTemplateEmail($email);
-                break;
-
-            case $content instanceof Content\EmptyContent:
                 $response = $this->sendNonTemplateEmail($email);
                 break;
 

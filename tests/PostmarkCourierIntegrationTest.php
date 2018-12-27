@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace Camuthig\Courier\Postmark\Test;
 
-use Courier\PostmarkCourier;
-use Courier\SparkPostCourier;
+use Camuthig\Courier\Postmark\PostmarkCourier;
 use PhpEmail\Attachment\FileAttachment;
 use PhpEmail\Content\SimpleContent;
 use PhpEmail\Content\TemplatedContent;
@@ -24,7 +23,7 @@ class PostmarkCourierIntegrationTest extends IntegrationTestCase
     private static $file = '/tmp/sparkpost_attachment_test.txt';
 
     /**
-     * @var SparkPostCourier
+     * @var PostmarkCourier
      */
     private $courier;
 
@@ -72,7 +71,7 @@ class PostmarkCourierIntegrationTest extends IntegrationTestCase
         self::assertEquals(getenv('POSTMARK_SENDER'), $message->getHeaderValue('from'));
         self::assertEquals($this->getTo(), $message->getHeaderValue('to'));
         self::assertEquals($this->getCc(), $message->getHeaderValue('cc'));
-        self::stringStartsWith('HTML', $message->getHtmlContent());
+        self::assertStringStartsWith('HTML', $message->getHtmlContent());
         self::assertEquals('text', trim($message->getTextContent()));
         self::assertHasAttachmentWithContentId($message, 'embed-test');
         self::assertHasAttachmentWithName($message, 'Attached File');
@@ -84,7 +83,7 @@ class PostmarkCourierIntegrationTest extends IntegrationTestCase
         self::assertEquals(getenv('POSTMARK_SENDER'), $message->getHeaderValue('from'));
         self::assertEquals($this->getTo(), $message->getHeaderValue('to'));
         self::assertEquals($this->getCc(), $message->getHeaderValue('cc'));
-        self::stringStartsWith('HTML', $message->getHtmlContent());
+        self::assertStringStartsWith('HTML', $message->getHtmlContent());
         self::assertEquals('text', trim($message->getTextContent()));
         self::assertHasAttachmentWithContentId($message, 'embed-test');
         self::assertHasAttachmentWithName($message, 'Attached File');
@@ -119,7 +118,7 @@ class PostmarkCourierIntegrationTest extends IntegrationTestCase
         self::assertEquals($subject, $message->getHeaderValue('subject'));
         self::assertEquals($this->getTo(), $message->getHeaderValue('to'));
         self::assertEquals($this->getCc(), $message->getHeaderValue('cc'));
-        self::stringStartsWith('HTML', $message->getHtmlContent());
+        self::assertStringStartsWith('HTML', $message->getHtmlContent());
         self::assertEquals('text', trim($message->getTextContent()));
         self::assertHasAttachmentWithContentId($message, 'embed-test');
         self::assertHasAttachmentWithName($message, 'Attached File');
