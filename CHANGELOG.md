@@ -7,6 +7,14 @@ and this project attempts to follow [Semantic Versioning](http://semver.org/spec
 
 ## Unreleased
 
+### Removed
+
+* Dropped support for Courier 0.4 and 0.5
+
+### Changed
+
+* Added support for Courier 0.6
+
 ## 0.1.1 - 2018-12-10
 
 ### Added
