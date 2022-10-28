@@ -1,3 +1,7 @@
+**Archived**
+
+The [quartzy/courier](https://github.com/quartzy/courier) has moved to read-only.
+
 # Courier
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
